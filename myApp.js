@@ -11,6 +11,12 @@ const messageStyle = process.env.MESSAGE_STYLE
 // Step 3 Solution
 app.use('/public', express.static(__dirname + '/public'))
 
+// Step 6 Solution
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.path} - ${req.ip}`)
+    next()
+})
+
 // Step 2 Solution
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html')
