@@ -1,6 +1,8 @@
 let express = require('express');
 let app = express();
 
+const messageStyle = process.env.MESSAGE_STYLE
+
 // Step 1 Solution
 // app.get('/', (req, res) => {
 //     res.send('Hello Express')
@@ -14,9 +16,11 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html')
 })
 
-// Step 4 Solution
+// Step 4 & 5 Solution
 app.get('/json', (req, res) => {
-    res.json({
-        'message': 'Hello json'
-    })
+    if (messageStyle === uppercase) {
+        res.send({ message: 'HELLO JSON' })
+    } else {
+        res.send({ message: 'Hello json' })
+    }
 })

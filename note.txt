@@ -42,3 +42,14 @@ While an HTML server serves HTML, an API serves data. A REST (REpresentational S
 Let's create a simple API by creating a route that responds with JSON at the path /json. You can do it as usual, with the app.get() method. Inside the route handler, use the method res.json(), passing in an object as an argument. This method closes the request-response loop, returning the data. Behind the scenes, it converts a valid JavaScript object into a string, then sets the appropriate headers to tell your browser that you are serving JSON, and sends the data back. A valid object has the usual structure {key: data}. data can be a number, a string, a nested object or an array. data can also be a variable or the result of a function call, in which case it will be evaluated before being converted into a string.
 
 Serve the object {"message": "Hello json"} as a response, in JSON format, to GET requests to the /json route. Then point your browser to your-app-url/json, you should see the message on the screen.
+
+
+Step 5 - use the .env file
+
+Create a .env file in the root of your project directory, and store the variable MESSAGE_STYLE=uppercase in it.
+
+Then, in the /json GET route handler you created in the last challenge access process.env.MESSAGE_STYLE and transform the response object's message to uppercase if the variable equals uppercase. The response object should either be {"message": "Hello json"} or {"message": "HELLO JSON"}, depending on the MESSAGE_STYLE value.
+
+Note: If you are using Replit, you cannot create a .env file. Instead, use the built-in SECRETS tab to add the variable.
+
+If you are working locally, you will need the dotenv package. It loads environment variables from your .env file into process.env. The dotenv package has already been installed, and is in your project's package.json file. At the top of your myApp.js file, import and load the variables with require('dotenv').config().
