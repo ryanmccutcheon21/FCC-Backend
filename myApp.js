@@ -30,3 +30,11 @@ app.get('/json', (req, res) => {
         res.send({ message: 'Hello json' })
     }
 })
+
+// Step 7 Solution
+app.get('/now', (req, res, now) => {
+    req.time = new Date().toString()
+    next()
+}, (req, res) => {
+    res.json({ time: req.time })
+})
