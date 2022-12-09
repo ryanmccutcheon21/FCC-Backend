@@ -25,9 +25,9 @@ app.get('/', (req, res) => {
 // Step 4 & 5 Solution
 app.get('/json', (req, res) => {
     if (messageStyle === uppercase) {
-        res.send({ message: 'HELLO JSON' })
+        res.json({ message: 'HELLO JSON' })
     } else {
-        res.send({ message: 'Hello json' })
+        res.json({ message: 'Hello json' })
     }
 })
 
@@ -37,4 +37,11 @@ app.get('/now', (req, res, now) => {
     next()
 }, (req, res) => {
     res.json({ time: req.time })
+})
+
+// Step 8 Solution
+
+app.get('/:word/echo', (req, res) => {
+    const { word } = req.params
+    res.json({ echo: word })
 })
