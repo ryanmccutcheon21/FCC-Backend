@@ -1,6 +1,8 @@
 let express = require('express');
 let app = express();
 
+const bodyParser = require('body-parser')
+
 const messageStyle = process.env.MESSAGE_STYLE
 
 // Step 1 Solution
@@ -16,6 +18,9 @@ app.use((req, res, next) => {
     console.log(`${req.method} ${req.path} - ${req.ip}`)
     next()
 })
+
+// Step 10 Solution
+app.use(bodyParser.urlencoded({ extended: false }))
 
 // Step 2 Solution
 app.get('/', (req, res) => {
@@ -44,4 +49,13 @@ app.get('/now', (req, res, now) => {
 app.get('/:word/echo', (req, res) => {
     const { word } = req.params
     res.json({ echo: word })
+})
+
+// Step 9 Solution
+
+app.route('/name').get((req, res) => {
+    const { first, last } = req.query
+    res.json({
+        name: `${first} ${last}`
+    })
 })
