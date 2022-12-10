@@ -45,14 +45,12 @@ app.get('/now', (req, res, now) => {
 })
 
 // Step 8 Solution
-
 app.get('/:word/echo', (req, res) => {
     const { word } = req.params
     res.json({ echo: word })
 })
 
 // Step 9 Solution
-
 app.route('/name').get((req, res) => {
     const { first, last } = req.query
     res.json({
@@ -61,7 +59,7 @@ app.route('/name').get((req, res) => {
 })
 
 // Step 11 Solution
-app.post('/name', (req, res, next) => {
+app.post('/name', (req, res) => {
     const { first, last } = req.body
     res.json({
         name: `${first} ${last}`
