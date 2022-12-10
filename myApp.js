@@ -59,3 +59,11 @@ app.route('/name').get((req, res) => {
         name: `${first} ${last}`
     })
 })
+
+// Step 11 Solution
+app.post('/name', (req, res, next) => {
+    const { first, last } = req.body
+    res.json({
+        name: `${first} ${last}`
+    })
+})
