@@ -9,8 +9,20 @@ mongoose.connect(MONGODB_URI, {
     useUnifiedTopology: true
 })
 
+// Step 2 Solution
+// assign mongoose Schema to a variable
+const Schema = mongoose.Schema
 
-let Person;
+// create Person schema
+const personSchema = new Schema({
+    name: { type: String, required: true },
+    age: Number,
+    favoriteFoods: [String]
+})
+
+// create Person model from the schema
+const Person = mongoose.model('Person', personSchema)
+
 
 const createAndSavePerson = (done) => {
     done(null /*, data*/);
