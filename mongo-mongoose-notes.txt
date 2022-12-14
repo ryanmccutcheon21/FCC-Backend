@@ -58,3 +58,13 @@ Step 4 - Create Many Records with model.create()
 ometimes you need to create many instances of your models, e.g. when seeding a database with initial data. Model.create() takes an array of objects like [{name: 'John', ...}, {...}, ...] as the first argument, and saves them all in the db.
 
 Modify the createManyPeople function to create many people using Model.create() with the argument arrayOfPeople.
+
+
+
+Step 5 - Use model.find() to Search Your database
+
+In its simplest usage, Model.find() accepts a query document (a JSON object) as the first argument, then a callback. It returns an array of matches. It supports an extremely wide range of search options. Read more in the docs.
+
+Modify the findPeopleByName function to find all the people having a given name, using Model.find() -> [Person]
+
+Use the function argument personName as the search key.
