@@ -71,7 +71,6 @@ const createManyPeople = (arrayOfPeople, done) => {
         if (err) return console.error(err)
         done(null, people)
     })
-    done(null, data);
 };
 
 
@@ -82,7 +81,6 @@ const findPeopleByName = (personName, done) => {
         done(null, personFound)
     }
     )
-    done(null, data);
 };
 
 
@@ -92,11 +90,15 @@ const findOneByFood = (food, done) => {
         if (err) return console.error(err)
         done(null, personFound)
     })
-    done(null, data);
 };
 
+
+// Step 7 Solution
 const findPersonById = (personId, done) => {
-    done(null /*, data*/);
+    Person.findById(personId, (err, personFound) => {
+        if (err) return console.log(err)
+        done(null, personFound)
+    })
 };
 
 const findEditThenSave = (personId, done) => {
