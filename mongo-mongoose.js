@@ -146,14 +146,21 @@ const removeManyPeople = (done) => {
         if (err) console.error(err)
         done(null, response)
     })
-
-    done(null /*, data*/);
 };
 
+
+// Step 12 Solution
 const queryChain = (done) => {
     const foodToSearch = "burrito";
 
-    done(null /*, data*/);
+    Person.find({ favoriteFoods: foodToSearch })
+        .sort({ name: 1 }) // Here: 1 for ascending	order and -1 for descending order.
+        .limit(2) // return array which has 2 items in it.
+        .select({ age: 0 }) // Here: 0 means false and thus hide age property; 1 means true so age property would show if set to 1.
+        .exec((err, data) => {
+            if (err) console.error(err)
+            done(null, data)
+        })
 };
 
 /** **Well Done !!**
