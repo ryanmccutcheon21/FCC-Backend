@@ -37,12 +37,41 @@ const createAndSavePerson = (done) => {
     })
     ryanMcC.save((err, data) => {
         if (err) return console.error(err)
+        done(null, data);
     })
-    done(null /*, data*/);
 };
 
+// Step 4 Solution
+const arrayOfPeople = [
+    {
+        name: 'Ryan',
+        age: 27,
+        favoriteFoods: ['mac & cheese',
+            'fried chicken',
+            'mashed potatoes and brown gravy']
+    },
+    {
+        name: 'Kayla',
+        age: 26,
+        favoriteFoods: ['mac & cheese',
+            'fried chicken',
+            'mashed potatoes and brown gravy']
+    },
+    {
+        name: 'Nolan',
+        age: 27,
+        favoriteFoods: ['mac & cheese',
+            'fried chicken',
+            'mashed potatoes and brown gravy']
+    }
+]
+
 const createManyPeople = (arrayOfPeople, done) => {
-    done(null /*, data*/);
+    Person.create(arrayOfPeople, (err, people) => {
+        if (err) return console.error(err)
+        done(null, people)
+    })
+    done(null, data);
 };
 
 const findPeopleByName = (personName, done) => {
