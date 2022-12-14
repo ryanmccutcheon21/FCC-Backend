@@ -138,8 +138,14 @@ const removeById = (personId, done) => {
     })
 };
 
+
+// Step 11 Solution
 const removeManyPeople = (done) => {
-    const nameToRemove = "Mary";
+    const nameToRemove = "Mary"
+    Person.remove({ name: nameToRemove }, (err, response) => {
+        if (err) console.error(err)
+        done(null, response)
+    })
 
     done(null /*, data*/);
 };
